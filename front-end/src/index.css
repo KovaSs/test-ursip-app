@@ -1,0 +1,44 @@
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.main__article {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__article h2 {
+  text-align: center;
+}
+
+.main__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article {
+  min-width: 250px;
+}
+
+.article li {
+  padding: 5px 10px;
+  background-color: #d1e1f9;
+  margin: 20px 0;
+  list-style-type: none; /* Убираем маркеры */
+ }
+.article li:hover {
+  background-color: #accbf9;
+  cursor: pointer;
+}
+
+.article ul {
+  margin-left: 0; /* Отступ слева в браузере IE и Opera */
+  padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+ }
+
+ .text {
+  max-width: 600px;
+ }

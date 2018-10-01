@@ -1,32 +1,27 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
-import {Provider} from 'react-redux'
-import {getAllArticles} from './AC/actions'
+
+import Article from './components/Article';
+import ArticleText from './components/ArticleText';
 
 
 class App extends Component {
-
-  componentDidMount() {
-
-    this.props.getAllArticles()
-  
-    // fetch(`/api/article/56c782f18990ecf954f6e027`)
-    // .then(res => res.json())
-    // .then( r => console.log(r))
-  }
-
   render() {
+    // console.log(articles) 
     return (
-      <div >
-        <header>
-          <h1>Welcome to React</h1>
-        </header>
-        <p>
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <div className='main'>
+        <div className='main__article'>
+          <header>
+            <h2> Article List</h2>
+          </header>
+          <Article />
+        </div>
+
+        <div className='main__text'>
+          <ArticleText />
+        </div>
+      </div>  
+    )
   }
 }
 
-export default connect({}, {getAllArticles})(App);
+export default App

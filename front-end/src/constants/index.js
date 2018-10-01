@@ -1,3 +1,3 @@
-export const START = 'START'
-export const SUCCESS = 'SUCCESS'
-export const FAIL = 'FAIL'
+export const START = '_START'
+export const SUCCESS = '_SUCCESS'
+export const FAIL = '_FAIL'

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import atricles from './articles'
+import articles from './articles'
 
 export default combineReducers({
-  atricles
+  app: articles
 }) 
 
