@@ -1,47 +1,43 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {addArticles, getAllArticles} from '../actions'
-import { Button } from 'antd';
-
+import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
+import { getAllArticles } from '../actions'
+import Btn from '../components/Btn'
 
 class Article extends Component {
-
   componentDidMount() {
     this.props.getAllArticles()
   }
-
-  onClick =() =>{
-    console.log('click', this.props)
-    this.props.getAllArticles()
-  }
-
   render() {
     const {articles} = this.props
     // console.log(articles) 
     return (
-      <div>
+      <div className='main__article'>
         <section className='article'>
+          <h2> Article List</h2>
           <ul>
             {
-              articles.map((item) => {
-                // console.log('item', item)
-                return <li key={item.id}>{item.title}</li>
-              })
+              articles.map((item) => (
+                <li key={item.id}>
+                  <Link to={`/${item.id}`}>
+                    {item.title}
+                  </Link>
+                </li>
+              ))
             }
           </ul>
+          <Btn />
         </section>
-        <p>
-          <Button type="primary" onClick={this.onClick}>Default</Button>
-        </p>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => (
+export const mapStateToProps = state => (
   {
     articles: state.app.articles
   }
 ) 
 
-export default connect(mapStateToProps, { addArticles, getAllArticles })(Article)
+export default connect(mapStateToProps, { getAllArticles })(Article)
