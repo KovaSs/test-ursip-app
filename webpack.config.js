@@ -31,7 +31,13 @@ module.exports = {
                 test: /\.css$/,
                 loader: "style-loader!css-loader",
                 include: path.join(__dirname, 'front-end/src')
-            }
+            },
+            {
+                test: /\.(jpg|jpeg|gif|png)$/,
+                 include: path.resolve(__dirname, "/src/img"),
+                 loader:'url-loader?limit=1024&name=images/[name].[ext]'
+             }
         ]
+       
     }
 }

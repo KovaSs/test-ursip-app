@@ -6,7 +6,6 @@ import store  from "./store";
 import './antd.css';
 import './index.css';
 
-
 ReactDOM.render((
   <Provider store={store}>
       <div className ='app'>

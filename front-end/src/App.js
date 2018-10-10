@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import Article from './components/Article';
-import ArticleText from './components/ArticleText';
+import { BrowserRouter as Router, browserHistory, Route, NavLink, Switch} from "react-router-dom";
 import {connect} from 'react-redux'
 import { withRouter } from "react-router";
-// import { browserHistory, Router, Route} from "react-router";
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Article from './components/Article';
+import ArticleText from './components/ArticleText';
 
 class App extends Component {
+
   render() {
+  
+    console.log('this.props', this.props)
     return (
       <div className='main'>
-        <Router>
+        <Router history={browserHistory}>
         <div>
-          <Route exact path="/" component={Article} />
-          <Route exact path="/id" component={ArticleText} />   
+          <Switch>
+            <Route exact path="/" component={Article} />
+            <Route  path="/article/:id" component={ArticleText} />   
+          </Switch>
         </div>  
         </Router>
       </div>

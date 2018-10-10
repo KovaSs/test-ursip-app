@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
 import {connect} from 'react-redux'
 import { withRouter } from "react-router-dom";
 import { getAllArticles } from '../actions'
@@ -14,7 +13,7 @@ class Btn extends Component {
   render() {
     return (
       <p>
-        <Button type="primary" onClick={this.onClick}>Refresh</Button>
+        <button className = 'btn' type = "primary" onClick={this.onClick}>Refresh</button>
       </p>
     )
   }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { Link } from 'react-router-dom';
-import { withRouter } from "react-router";
-import { getAllArticles } from '../actions'
-import Btn from '../components/Btn'
+import { Link, Route} from 'react-router-dom';
+import { getAllArticles, getArticlesText } from '../../actions'
+import Btn from '../Btn'
+
 
 class Article extends Component {
   componentDidMount() {
@@ -15,17 +15,15 @@ class Article extends Component {
     return (
       <div className='main__article'>
         <section className='article'>
-          <h2> Article List</h2>
+        <h2> Article List</h2>
           <ul>
-            {
-              articles.map((item) => (
-                <li key={item.id}>
-                  <Link to={`/${item.id}`}>
-                    {item.title}
-                  </Link>
-                </li>
-              ))
-            }
+            {articles.map((item) => (
+                <Link key={item.id} to={`/article/${item.id}`}>
+                  <li>
+                      {item.title}
+                  </li>
+                </Link>
+              ))}
           </ul>
           <Btn />
         </section>
@@ -40,4 +38,4 @@ export const mapStateToProps = state => (
   }
 ) 
 
-export default connect(mapStateToProps, { getAllArticles })(Article)
+export default connect(mapStateToProps, { getAllArticles, getArticlesText })(Article)

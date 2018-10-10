@@ -1,19 +1,38 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import { Link } from 'react-router-dom';
+import { getArticlesText } from '../actions'
+import Loader from './Loader'
+
+
 
 class ArticleText extends Component {
+  componentDidMount() {
+    this.props.getArticlesText(this.props.location.pathname.slice(9))
+  }
   render() {
+    const {articleText, articleTitle} = this.props
     return(
       <div className='main__text'>
-      <div className='text'>
-        Anim ipsum eu incididunt elit eu consectetur veniam mollit dolor
-         ex adipisicing labore. Id non laborum laborum est ea nostrud. Qui fugiat reprehenderit
-          eu amet incididunt sint id labore laborum minim enim veniam ut. Sunt fugiat cillum magna 
-          laborum. Et cupidatat laboris minim dolor nostrud do esse qui aute irure officia. Mollit officia 
-          consequat adipisicing ut anim do est sint ipsum commodo dolor ipsum.
+        <div className='text'>
+          <h2>
+            {articleTitle.title ? articleTitle.title : <Loader/>}
+          </h2>
+          <div>
+            {articleText.text ? articleText.text : ''}
+          </div>
         </div>
       </div>
     )
   }
 }
 
-export default ArticleText
+export const mapStateToProps = state => (
+  {
+    articleTitle: state.text.articleTitle,
+    articleText: state.text.articleText
+  }
+) 
+
+
+export default connect(mapStateToProps, { getArticlesText })(ArticleText)
